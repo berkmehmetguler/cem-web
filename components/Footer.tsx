@@ -2,74 +2,62 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <section
-      className="bg-coolGray-900 overflow-hidden"
-      style={{
-        backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed",
-        backgroundColor: "#1a202c",
-        
-        backgroundSize: "cover",
-        backgroundImage: "url('/flex-ui-assets/elements/pattern-dark.svg')",
-        backgroundPosition: "center",
-      }}
-    >
+    <footer
+      className="bg-gray-900 overflow-hidden relative"
 
-  
+    >
       <div className="container px-4 mx-auto">
-        <div className="flex flex-wrap lg:items-center pt-24 pb-12 -mx-4">
+        <div className="flex flex-wrap lg:items-center pt-16 pb-8 -mx-4">
           {/* Sol kısım */}
           <div className="w-full md:w-3/4 px-4">
-            <Link href="/" className="block mb-8 max-w-max ">
+            <Link href="/" className="block mb-6 max-w-max">
               <Image
                 src="/logo.png"
-                alt="Flex Logo"
-                width={120}
-                height={40}
+                alt="PitStop Mobile Tire Change Edmonton Logo"
+                width={220}
+                height={60}
+                className="h-20 w-auto"
               />
             </Link>
-            <p className="mb-12 text-base md:text-lg text-white font-medium md:max-w-sm">
-              Launch your own Software As A Service Application with Flex Solutions.
+            <p className="mb-8 text-base md:text-lg text-white font-medium md:max-w-md">
+              Fast, reliable, and professional mobile tire change service in Edmonton. 
+              Available 24/7 — we come to you, wherever you are.
             </p>
 
             {/* Menü */}
-            <div className="mb-12 md:mb-0 flex flex-wrap -mx-3 md:-mx-6 ">
-              {["Product", "Features", "Pricing", "Resources", "Careers", "Help", "Privacy"].map(
-                (item) => (
-                  <div key={item} className="w-full md:w-auto p-3 md:py-0 md:px-6">
-                    <Link
-                      href="/"
-                      className="inline-block  text-white hover:text-coolGray-500 font-medium"
-                    >
-                      {item}
-                    </Link>
-                  </div>
-                )
-              )}
+            <div className="flex flex-wrap gap-6">
+              {[
+                { name: "Home", link: "/" },
+                { name: "Services", link: "/services" },
+                { name: "About Us", link: "/about" },
+                { name: "Contact", link: "/contact" },
+                { name: "Privacy Policy", link: "/privacy" },
+              ].map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.link}
+                  className="text-white hover:text-gray-400 font-medium transition"
+                >
+                  {item.name}
+                </Link>
+              ))}
             </div>
           </div>
 
-          {/* Sağ kısım - Store butonları */}
-          <div className="w-full md:w-1/4 px-4">
-            <div className="lg:pr-10 lg:ml-auto lg:max-w-max">
-              <Link href="/" className="block mb-4">
-                <Image
-                  src="/app-store-dark.svg"
-                  alt="App Store"
-                  width={150}
-                  height={50}
-                />
-              </Link>
-              <Link href="/" className="block">
-                <Image
-                  src="/google-play-dark.svg"
-                  alt="Google Play"
-                  width={150}
-                  height={50}
-                />
+          {/* Sağ kısım - CTA */}
+          <div className="w-full md:w-1/4 px-4 mt-8 md:mt-0">
+            <div className="lg:ml-auto">
+              <Link
+                href="tel:+16474512391"
+                className="rounded-full bg-red-700/90 px-6 py-3 h-14 hover:bg-orange-600 focus:ring-4 focus:ring-orange-200 inline-flex items-center justify-center gap-3 transition duration-200"
+              >
+                <span className="text-white text-sm font-semibold tracking-tight">
+                  Call Us Now
+                </span>
               </Link>
             </div>
           </div>
@@ -80,30 +68,29 @@ export default function Footer() {
 
       {/* Alt bilgi */}
       <div className="container px-4 mx-auto">
-        <div className="flex flex-wrap items-center py-12 md:pb-32">
-          <div className="w-full md:w-1/2 mb-6 md:mb-0">
-            <p className=" text-white font-medium">
-              © 2025 Flex. All rights reserved.
-            </p>
-          </div>
-          <div className="w-full md:w-1/2">
-            <div className="flex flex-wrap md:justify-end -mx-5">
-              {/* Sosyal ikonlar */}
-              {["facebook", "twitter", "instagram", "github", "linkedin"].map((icon, i) => (
-                <div key={i} className="px-5">
-                  <Link
-                    href="/"
-                    className="inline-block text-coolGray-400 hover:text-coolGray-500"
-                  >
-                    <span className="sr-only">{icon}</span>
-                    {/* Burada inline svg yerine icon component ekleyebilirsin */}
-                  </Link>
-                </div>
-              ))}
-            </div>
+        <div className="flex flex-wrap items-center justify-between py-8">
+        
+
+          {/* Sosyal ikonlar */}
+          <div className="flex gap-6 text-white text-lg">
+            <Link href="/" className="hover:text-gray-400">
+              <FaFacebookF />
+            </Link>
+            <Link href="/" className="hover:text-gray-400">
+              <FaTwitter />
+            </Link>
+            <Link href="/" className="hover:text-gray-400">
+              <FaInstagram />
+            </Link>
+            <Link href="/" className="hover:text-gray-400">
+              <FaLinkedinIn />
+            </Link>
           </div>
         </div>
+          <p className="text-white my-4 text-sm font-medium">
+            © {new Date().getFullYear()} PitStop Edmonton. All rights reserved.
+          </p>
       </div>
-    </section>
+    </footer>
   );
 }

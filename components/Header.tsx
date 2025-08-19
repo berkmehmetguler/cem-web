@@ -3,18 +3,30 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { FaPhoneFlip } from "react-icons/fa6";
+
 export default function HeroSection() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
-    <section className="p-5">
+    <section className="p-5 relative">
+      {/* Background Video */}
+      <video
+        src="/main-vid.mp4"
+        width={500}
+        className="absolute top-0 left-0 w-full h-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{ zIndex: 0, opacity: 1 }}
+      ></video>
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/40 z-0"></div>
+
       <header
-        className="rounded-2xl px-4 md:px-14 pb-16 bg-center bg-no-repeat bg-cover relative"
-        // style={{
-        //   backgroundImage: "url('/consulty-assets/headers/picture5.png')",
-        // }}
+        className="relative z-10 rounded-2xl px-4 md:px-14 pb-16 bg-center bg-no-repeat bg-cover"
       >
-    
         {/* Header */}
         <nav className="relative h-fit py-4 ">
           <div className="flex items-center justify-between">
@@ -22,10 +34,10 @@ export default function HeroSection() {
             <div className="flex items-center gap-3  ">
               <Link href="/" className="inline-block">
                 <Image
-                  className="h-ful w-auto"
+                  className="h-32 w-auto"
                   src="/logo.png"
-                  alt="PitStop Logo"
-                  width={300}
+                  alt="PitStop Mobile Tire Change Edmonton Logo"
+                  width={400}
                   height={100}
                 />
               </Link>
@@ -40,42 +52,36 @@ export default function HeroSection() {
                 >
                   <div className="flex items-center gap-2">
                     <span className="text-white group-hover:text-black text-xl font-medium tracking-tight">
-                      Products
+                      Home
                     </span>
-                    <div className="text-white group-hover:text-black transition duration-200">
-                      ▼
-                    </div>
                   </div>
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/case-studies"
+                  href="/services"
                   className="inline-block py-2 px-3 hover:bg-gray-100 hover:text-black transition duration-200 text-white text-xl font-medium tracking-tight rounded-full"
                 >
-                  Case Studies
+                  Services
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/support"
+                  href="/about"
                   className="inline-block py-2 px-3 hover:bg-gray-100 hover:text-black transition duration-200 text-white text-xl font-medium tracking-tight rounded-full"
                 >
-                  Support
+                  About Us
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/resources"
+                  href="/contact"
                   className="inline-block py-2 px-3 hover:bg-gray-100 group transition duration-200 rounded-full"
                 >
                   <div className="flex items-center gap-2">
                     <span className="text-white group-hover:text-black text-xl font-medium tracking-tight">
-                      Resources
+                      Contact
                     </span>
-                    <div className="text-white group-hover:text-black transition duration-200">
-                      ▼
-                    </div>
                   </div>
                 </Link>
               </li>
@@ -83,13 +89,13 @@ export default function HeroSection() {
 
             {/* CTA Button */}
             <Link
-              href="tel:+1234567890"
+              href="tel:+16474512391"
               className="rounded-full border border-gray-200 bg-white px-5 py-3 h-14 hover:bg-gray-50 focus:ring-4 focus:ring-gray-200 hidden xl:inline-flex items-center justify-center gap-2 transition duration-200"
             >
               <span className="text-md font-semibold tracking-tight">
                 Get A Free Call
               </span>
-              →
+              <FaPhoneFlip />
             </Link>
 
             {/* Mobile Menu Button */}
@@ -130,11 +136,11 @@ export default function HeroSection() {
               <div className="flex items-center justify-between">
                 <Link href="/" className="inline-block">
                   <Image
-                    className="h-16 w-auto"
+                    className="h-32 w-auto"
                     src="/logo.png"
-                    alt="PitStop Logo"
-                    width={50}
-                    height={28}
+                    alt="PitStop Mobile Tire Change Edmonton Logo"
+                    width={250}
+                    height={128}
                   />
                 </Link>
                 <button onClick={() => setMobileNavOpen(false)}>✕</button>
@@ -143,45 +149,45 @@ export default function HeroSection() {
                 <li>
                   <Link
                     href="/"
-                    className="inline-block  py-2 px-3 hover:bg-gray-50 transition duration-200 rounded-full"
+                    className="inline-block py-2 px-3 hover:bg-gray-50 transition duration-200 text-xl font-black tracking-tight rounded-full"
                   >
-                    Products ▼
+                    Home
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/case-studies"
-                    className="inline-block py-2 px-3 hover:bg-gray-50 transition duration-200 text-sm font-medium tracking-tight rounded-full"
+                    href="/services"
+                    className="inline-block py-2 px-3 hover:bg-gray-50 transition duration-200 text-xl font-black tracking-tight rounded-full"
                   >
-                    Case Studies
+                    Services
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/support"
-                    className="inline-block py-2 px-3 hover:bg-gray-50 transition duration-200 text-sm font-medium tracking-tight rounded-full"
+                    href="/about"
+                    className="inline-block py-2 px-3 hover:bg-gray-50 transition duration-200 text-xl font-black tracking-tight rounded-full"
                   >
-                    Support
+                    About Us
                   </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="inline-block py-2 px-3 hover:bg-gray-50 transition duration-200 rounded-full"
+                  <Link
+                    href="/contact"
+                    className="inline-block py-2 px-3 hover:bg-gray-50 transition duration-200 text-xl font-black tracking-tight rounded-full"
                   >
-                    Resources ▼
-                  </a>
+                    Contact
+                  </Link>
                 </li>
               </ul>
               <div className="flex flex-col gap-4">
                 <Link
-                  href="/tel:+1234567890"
-                  className="rounded-full bg-black px-5 py-3 h-14 hover:bg-orange-600 focus:bg-orange-500 focus:ring-4 focus:ring-orange-200 inline-flex items-center justify-center gap-2 transition duration-200"
+                  href="tel:+16474512391"
+                  className="rounded-full bg-red-700/90 px-5 py-3 h-14  hover:bg-orange-600 focus:bg-orange-500 focus:ring-4 focus:ring-orange-200 inline-flex items-center justify-center gap-4 transition duration-200"
                 >
-                  <span className="text-white text-sm font-semibold tracking-tight">
+                  <span className="text-white font-mono text-sm tracking-tight">
                     Get A Free Call
                   </span>
-                  →
+                  <FaPhoneFlip color="white" />
                 </Link>
               </div>
             </nav>
@@ -190,46 +196,21 @@ export default function HeroSection() {
 
         {/* Hero Content */}
         <div className="py-20">
-          
           <h1 className="font-heading tracking-tight text-5xl md:text-7xl text-white font-medium max-w-xs md:max-w-xl mb-6">
-            Get help from the industry experts.
+            Available 24/7 Across Edmonton
           </h1>
-          <p className="tracking-tight text-white text-lg mb-8 max-w-md">
-            We are passionate about transforming spaces into extraordinary
-            experiences. With a seamless fusion of architecture and interior
-            design.
+          <p className="tracking-tight text-white text-xl mb-8 max-w-md">
+            Get Your Tires Changed Anytime, Anywhere in Edmonton
           </p>
           <a
-            href="#"
+            href="tel:+16474512391"
             className="rounded-full border border-gray-200 bg-white px-6 py-4 h-16 hover:bg-gray-50 focus:ring-4 focus:ring-gray-200 inline-flex items-center justify-center gap-2 transition duration-200"
           >
-            <span className="font-bold tracking-tight">Book A Free Call</span> →
+            <span className="font-bold tracking-tight ">Book A Free Call</span>{" "}
+            <FaPhoneFlip color="black" />
           </a>
-          
-        </div>
-        
-
-        {/* Decoration */}
-        <div className="hidden md:block absolute bottom-8 right-8">
-          
-          <Image
-            src="/consulty-assets/headers/arrow-circle2.svg"
-            alt="Decoration"
-            width={200}
-            height={200}
-          />
         </div>
       </header>
-          <video
-          src="/main-vid.mp4"
-          width={500}
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={{ zIndex: -1, opacity: 1}}
-        ></video>
     </section>
   );
 }
